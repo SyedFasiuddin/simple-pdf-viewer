@@ -21,16 +21,19 @@ struct ContentView: View {
 }
 
 struct PDFKitView: NSViewRepresentable {
-    var url : URL
+    var url: URL
+    
     func makeNSView(context: Context) -> PDFView {
         let pdfView = PDFView()
         
-        pdfView.document = PDFDocument(url:url)
+        pdfView.document = PDFDocument(url: url)
         pdfView.displaysPageBreaks = false
         pdfView.pageShadowsEnabled = false
         
         return pdfView
     }
     
-    func updateNSView(_ nsView: PDFView, context: Context) {  }
+    func updateNSView(_ nsView: PDFView, context: Context) {
+        nsView.document = PDFDocument(url: url)
+    }
 }
